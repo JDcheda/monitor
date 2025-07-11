@@ -10,3 +10,9 @@ Aplicación web que muestra en tiempo real el estado del sistema (CPU, RAM, Disc
 ```bash
 git clone https://github.com/JDcheda/monitor.git
 cd monitor
+python -m venv venv
+.\venv\Scripts\activate
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+
