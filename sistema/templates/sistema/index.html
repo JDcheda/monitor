@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Monitor del Sistema</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .card { border: 1px solid #ccc; border-radius: 8px; padding: 15px; margin: 10px; width: 250px; display: inline-block; vertical-align: top; }
+        button { margin: 20px 0; padding: 10px 20px; }
+    </style>
+</head>
+<body>
+    <h1>Estado del Sistema</h1>
+
+    {% if info.error %}
+        <p>Error: {{ info.error }}</p>
+    {% else %}
+        <div class="card">
+            <h3>CPU</h3>
+            <p>Uso: {{ info.cpu_percent }} %</p>
+            <p>Núcleos: {{ info.cores }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Memoria RAM</h3>
+            <p>Total: {{ info.memory_total }} GB</p>
+            <p>Usada: {{ info.memory_used }} GB ({{ info.memory_percent }} %)</p>
+        </div>
+
+        <div class="card">
+            <h3>Disco</h3>
+            <p>Total: {{ info.disk_total }} GB</p>
+            <p>Usado: {{ info.disk_used }} GB ({{ info.disk_percent }} %)</p>
+            <p>Libre: {{ info.disk_free }} GB</p>
+        </div>
+
+        <div class="card">
+            <h3>Sistema</h3>
+            <p>OS: {{ info.system }}</p>
+        </div>
+
+        <form method="get">
+            <button type="submit">Actualizar</button>
+        </form>
+    {% endif %}
+</body>
+</html>
